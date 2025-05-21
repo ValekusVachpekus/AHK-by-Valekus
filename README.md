@@ -1,4 +1,3 @@
-```markdown
 # Руководство по использованию AHK-скрипта для GOS
 
 ![AHK Logo](https://upload.wikimedia.org/wikipedia/commons/4/4f/AutoHotkey_Logo.png)
@@ -59,7 +58,7 @@
 - Перед редактированием сделайте backup исходного файла
 - Для тонкой настройки используйте документацию AutoHotkey
 
-```
+
 
 ![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
