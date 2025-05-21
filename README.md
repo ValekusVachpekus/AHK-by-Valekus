@@ -1,6 +1,5 @@
 # Руководство по использованию AHK-скрипта для GOS
 
-![AHK Logo](https://upload.wikimedia.org/wikipedia/commons/4/4f/AutoHotkey_Logo.png)
 
 ## 🔧 Настройка AHK
 
@@ -68,10 +67,8 @@
 
  1) #include file "UDF.ahk" cannot be opened
 
- . Проверьте, что файлы UDF.ahk, common.ahk и !AHK_for_GOS.ahk лежат в одной папке.
+ - Проверьте, что файлы UDF.ahk, common.ahk и !AHK_for_GOS.ahk лежат в одной папке.
 
- . Если ошибку все равно выдает, в файле !AHK_for_GOS.ahk поменяйте строчку #include file "UDF.ahk": вместо "UDF.ahk" укажите "путь до файла на вашем пк\UDF.ahk"
+ - Если ошибку все равно выдает, в файле !AHK_for_GOS.ahk поменяйте строчку #include file "UDF.ahk": вместо "UDF.ahk" укажите "путь до файла на вашем пк\UDF.ahk"
 
- . Проведите те же действия с common.ahk
-
- 2) 
+ - Проведите те же действия с common.ahk
