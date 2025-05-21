@@ -54,7 +54,7 @@
 ### Ошибка: Ошибка кодировки ANSI 32-bit
 
 **Решение**:
-1. Поменяйте программу для запуска AHK файла на AutoHotkeyA32_UIA.exe
+1. Поменяйте программу для запуска AHK файла на AutoHotkeyA32_UIA.exe (4 сверху)
    ![изображение](https://github.com/user-attachments/assets/d2ff4ea3-5e15-4417-9078-bd7c88085f0b)
 
 
