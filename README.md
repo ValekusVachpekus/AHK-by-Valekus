@@ -44,7 +44,7 @@
    ├── UDF.ahk
    └── common.ahk
    ```
-2. Если ошибка persists:
+2. Если ошибка осталась:
    ```ahk
    ; В файле !AHK_for_GOS.ahk замените:
    #include "UDF.ahk" → #include "C:\полный\путь\к\файлу\UDF.ahk"
