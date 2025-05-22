@@ -170,42 +170,42 @@ Return
 
 :?:!патруль::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Начал патруль по маршруту  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Начал патруль по маршруту  C-2, К-1.{left 10}
 Return
 
 :?:!патруль1::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Продолжаю патруль по маршруту  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Продолжаю патруль по маршруту  C-2, К-1.{left 10}
 Return
 
 :?:!патруль2::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Завершил патруль по маршруту  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Завершил патруль по маршруту  C-2, К-1.{left 10}
 Return
 
 :?:!пост::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Заступил на стационарный пост  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Заступил на стационарный пост  C-2, К-1.{left 10}
 Return
 
 :?:!пост1::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Продолжаю стоять на стационарном посту  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Продолжаю стоять на стационарном посту  C-2, К-1.{left 10}
 Return
 
 :?:!пост2::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Завершил дежурство на стационарном посту  C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Завершил дежурство на стационарном посту  C-2, К-1.{left 10}
 Return
 
 :?:!вк::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Начал сопровождение военной колонны C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Начал сопровождение военной колонны C-2, К-1.{left 6}
 Return
 
 :?:!вк1::
 SendMessage, 0x50,, 0x4190419,, A
-Sendinput, /r Докладывает полковник Валекус: Завершил сопровождение военной колонны C-2, К-1 .{Space}
+Sendinput, /r Докладывает полковник Валекус: Завершил сопровождение военной колонны C-2, К-1.{left 6}
 Return
 
 :?:!эв::
@@ -266,58 +266,160 @@ Return
 
 
 
-:?:!ву1::
+
+flvu1 := False, flvu2 := False, flvu3 := False
+flfp1 := False, flfp2 := False, flfp3 := False
+current_doc := 0
+
+:?:!ву::
 {
-    State1:=!State1
-    vu1(State1)
+    global current_doc, flvu1, flvu2, flvu3
+    
+    if (current_doc != 1)
+    {
+        CloseAllDocs()
+        current_doc := 1
+        flvu1 := True
+        vu1(flvu1)
+    }
+    else
+    {
+        CloseAllDocs()
+        current_doc := 0
+    }
     Return
 }
 
-
-:?:!ву2::
+:?:!фп::
 {
-    State2:=!State2
-    vu2(State2)
+    global current_doc, flfp1, flfp2, flfp3
+    
+    if (current_doc != 2)
+    {
+        CloseAllDocs()
+        current_doc := 2
+        flfp1 := True
+        fp1(flfp1)
+    }
+    else
+    {
+        CloseAllDocs()
+        current_doc := 0
+    }
     Return
 }
 
-
-:?:!ву3::
+PgUp::
 {
-    State3:=!State3
-    vu3(state3)
+    global current_doc
+    if (current_doc == 1)
+        NavigateVU("next")
+    else if (current_doc == 2)
+        NavigateFP("next")
     Return
 }
 
-
-:?:!фп1::
+PgDn::
 {
-    State5:=!State5
-    fp1(state5)
+    global current_doc
+    if (current_doc == 1)
+        NavigateVU("prev")
+    else if (current_doc == 2)
+        NavigateFP("prev")
     Return
 }
 
+NavigateVU(direction) {
+    global flvu1, flvu2, flvu3
+    
+    if (flvu1) {
+        flvu1 := False
+        flvu2 := (direction == "next") ? True : False
+        flvu3 := (direction == "prev") ? True : False
+        if (flvu2){
+            vu2(True)
+        }
+        if (flvu3){
+            vu3(True)
+        } 
+    }
+    else if (flvu2) {
+        flvu2 := False
+        flvu3 := (direction == "next") ? True : False
+        flvu1 := (direction == "prev") ? True : False
+        if (flvu3){
+            vu3(True)
+        }
+        if (flvu1){
+            vu1(True)
+        }
+    }
+    else if (flvu3) {
+        flvu3 := False
+        flvu1 := (direction == "next") ? True : False
+        flvu2 := (direction == "prev") ? True : False
+        if (flvu1){
+            vu1(True)
+        }
+        if (flvu2){
+            vu2(True)
+        }
+    }
+}
 
-:?:!фп2::
-{
-    State6:=!State6
-    fp2(state6)
-    Return
+NavigateFP(direction) {
+    global flfp1, flfp2, flfp3
+    
+    if (flfp1) {
+        flfp1 := False
+        flfp2 := (direction == "next") ? True : False
+        flfp3 := (direction == "prev") ? True : False
+        if (flfp2){
+            fp2(True)
+        }
+        if (flfp3){
+            fp3(True)
+        }
+    }
+    else if (flfp2) {
+        flfp2 := False
+        flfp3 := (direction == "next") ? True : False
+        flfp1 := (direction == "prev") ? True : False
+        if (flfp3){
+            fp3(True)
+        }
+        if (flfp1){
+            fp1(True)
+        }
+    }
+    else if (flfp3) {
+        flfp3 := False
+        flfp1 := (direction == "next") ? True : False
+        flfp2 := (direction == "prev") ? True : False
+        if (flfp1){
+            fp1(True)
+        }
+        if (flfp2){
+            fp2(True)
+        }
+    }
+}
+
+CloseAllDocs() {
+    global
+    Gui Destroy
+    flvu1 := flvu2 := flvu3 := False
+    flfp1 := flfp2 := flfp3 := False
 }
 
 
-:?:!фп3::
-{
-    State7:=!State7
-    fp3(state7)
-    Return
-}
-
-
+:?:!фп1::Return
+:?:!фп2::Return
+:?:!фп3::Return
 
 !X::
 {
-State4:=!State4
-help(state4)    
-Return
+    State4 := !State4
+    help(State4)    
+    Return
 }
