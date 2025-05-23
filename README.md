@@ -56,8 +56,9 @@
    - Введите `cmd`
    - Нажмите Enter
    - Перейдите в нужную вам директорию, используя `cd`
-     Вставьте строку ```cmd
-   - git clone https://github.com/ValekusVachpekus/AHK-by-Valekus
+   - Вставьте строку
+     ```
+     git clone https://github.com/ValekusVachpekus/AHK-by-Valekus
      ```
    - Готово!
 
