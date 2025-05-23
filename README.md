@@ -49,6 +49,24 @@
 
 ![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+## 📥 Установка AHK
+
+1. **Если есть git**
+   - Нажмите Win+R
+   - Введите `cmd`
+   - Нажмите Enter
+   - Перейдите в нужную вам директорию, используя `cd`
+   - Вставьте строку `git clone https://github.com/ValekusVachpekus/AHK-by-Valekus`
+   - Готово!
+
+2. **Если нет git**
+   - Нажмите на зеленую кнопку `Code`
+   - Нажмите на кнопку `Download ZIP`
+   - Распакуйте архив в нужной вам папке
+     ![изображение](https://github.com/user-attachments/assets/909d49a8-a3e6-4615-ba43-eecda39cc0d9)
+
+
+
 ## 🔧 Настройка AHK
 
 1. **Редактирование файла**
@@ -60,6 +78,7 @@
      Замените "полковник" → [Ваше звание]
      ```
    - Сохраните изменения (`Ctrl + S`)
+   - При изменении длины фамилии, должности и звания функция !деп может не туда ставить курсор. Выставьте нужное значение в {left [нужное значение]}
 
 ## 🚀 Запуск скрипта
 
@@ -97,7 +116,7 @@
    ; В файле !AHK_for_GOS.ahk замените:
    #include "UDF.ahk" → #include "C:\полный\путь\к\файлу\UDF.ahk"
    ```
-3. Повторите шаг 2 для файла `common.ahk`
+3. Повторите шаг 2 для файла `common.ahk` и `helper.ahk`.
 
 ### Ошибка: Ошибка кодировки ANSI 32-bit
 
@@ -118,12 +137,3 @@
 
 > **Note**  
 > Для дополнительной настройки обратитесь к официальной документации [AutoHotkey](https://www.autohotkey.com/docs/)
-(4) Возможные ошибки
-
- 1) #include file "UDF.ahk" cannot be opened
-
- - Проверьте, что файлы UDF.ahk, common.ahk и !AHK_for_GOS.ahk лежат в одной папке.
-
- - Если ошибку все равно выдает, в файле !AHK_for_GOS.ahk поменяйте строчку #include file "UDF.ahk": вместо "UDF.ahk" укажите "путь до файла на вашем пк\UDF.ahk"
-
- - Проведите те же действия с common.ahk
